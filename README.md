@@ -39,11 +39,11 @@
     git clone https://github.com/AbramtsevFV/grav && cd ./grav && python3.8 -m venv venv && source ./venv/bin/activate && pip install -r requirements.txt &&  python app.py
     ```
  ## Работа ##
- Отправьте GET запросс с параметрами:
+ Отправьте GET запрос с параметрами:
  
 >  http://127.0.0.1:5000/grav?q=email
 
- где <email> это email пользователя сервиса gravatar.com
+ где email это email пользователя сервиса gravatar.com
  ***
  Пример запроса из командной строки:
  ```
