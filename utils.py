@@ -8,16 +8,16 @@ def get_result(res, email):
     на выходе получаем с заданными параметрами"""
     result = {
         "result": {
-            'id': res['entry'][0]['id'],
-            'email_hash': res['entry'][0]['hash'],
+            'id': res.get('entry', [{}])[0].get('id', None),
+            'email_hash': res.get('entry', [{}])[0].get('hash', None),
             'email': email,
-            'url': res['entry'][0]['profileUrl'],
-            'alias': res['entry'][0]['preferredUsername'],
-            'photos': res['entry'][0]['photos'][0]['value'],
-            'person': res['entry'][0]['name']['formatted'] if res['entry'][0]['name'] else None,
+            'url': res.get('entry', [{}])[0].get('profileUrl', None),
+            'alias': res.get('entry', [{}])[0].get('preferredUsername', None),
+            'photos': res.get('entry', [{}])[0].get('preferredUsername', [{}])[0].get('value', None),
+            'person': res.get('entry', [{}])[0].get('name', {}).get('formatted', None) ,
             'location': res['entry'][0]['currentLocation'] if 'currentLocation' in res['entry'][0] else None,
             'accounts': res['entry'][0]['accounts'][0]['url'] if 'accounts' in res['entry'][0] else None,
-            'urls': res['entry'][0]['urls']
+            'urls': res.get('entry', [{}])[0].get('urls', None)
 
         }
     }
