@@ -33,7 +33,10 @@ def get_req(email):
     """ Запрос к серверу API и возврат результата"""
     url = f"https://ru.gravatar.com/{get_hash(email)}.json"
     session = requests.Session()
-    r = session.get(url).json()
-    if r != "User not found":
-        return get_result(r, email)
-    return {"message": f"The user with the email {email}  was not found"}
+    res = session.get(url).json()
+    if res.status_code == 200:
+        r = res.json()
+        if r != "User not found":
+            return get_result(r, email)
+        return {"message": f"The user with the email {email}  was not found"}
+    return {"message": f"Connection error. Status code {res.status_code}"}
