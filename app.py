@@ -4,6 +4,11 @@ from utils import get_req
 app = Flask(__name__)
 
 
+@app.route('/')
+def index():
+    return ( '<a href="https://github.com/AbramtsevFV/grav/blob/master/README.md">ReadMe</a>')
+
+
 @app.route('/grav')
 def grav():
     """Главный роут"""
