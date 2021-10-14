@@ -13,10 +13,10 @@ def get_result(res, email):
             'email': email,
             'url': res.get('entry', [{}])[0].get('profileUrl', None),
             'alias': res.get('entry', [{}])[0].get('preferredUsername', None),
-            'photos': res.get('entry', [{}])[0].get('preferredUsername', [{}])[0].get('value', None),
-            'person': res.get('entry', [{}])[0].get('name', {}).get('formatted', None) ,
-            'location': res['entry'][0]['currentLocation'] if 'currentLocation' in res['entry'][0] else None,
-            'accounts': res['entry'][0]['accounts'][0]['url'] if 'accounts' in res['entry'][0] else None,
+            'photos': res.get('entry', [{}])[0].get('photos', [{}])[0].get('value', None),
+            'person': res['entry'][0]['name']['formatted'] if 'formatted' in res['entry'][0]['name'] else None,
+            'location': res.get('entry', [{}])[0].get('currentLocation', None),
+            'accounts': res.get('entry', [{}])[0].get('accounts', [{}])[0].get('url', None),
             'urls': res.get('entry', [{}])[0].get('urls', None)
 
         }
@@ -34,7 +34,7 @@ def get_req(email):
     url = f"https://ru.gravatar.com/{get_hash(email)}.json"
     session = requests.Session()
     res = session.get(url)
-    if res.status_code == 200:
+    if res.status_code == 200 or res.json() == "User not found":
         r = res.json()
         if r != "User not found":
             return get_result(r, email)
