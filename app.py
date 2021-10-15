@@ -2,7 +2,7 @@ from flask import Flask, request
 from utils import get_req
 
 app = Flask(__name__)
-
+client = app.test_client()
 
 @app.route('/')
 def index():
