@@ -34,6 +34,7 @@
   ```
   ## Установка ##
   Для установки нужно выполнить команду в консоли (должен быть предварительно установлени Python  3.8:
+  Команда для Linux:
     
     ```
     git clone https://github.com/AbramtsevFV/grav && cd ./grav && python3.8 -m venv venv && source ./venv/bin/activate && pip install -r requirements.txt &&  python app.py
@@ -48,4 +49,10 @@
  Пример запроса из командной строки:
  ```
     curl http://127.0.0.1:5000/grav?q=mattdhoey@gmail.com
+  ```
+ ## Тесты ##
+ Для запуска тестов откройте консоль в корневой деректории с GRAV и выполните команду:
+ Команда для Linux:
+ ```
+  source venv/bin/activate && pytest tests -v
   ```
