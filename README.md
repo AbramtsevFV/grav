@@ -49,3 +49,8 @@
  ```
     curl http://127.0.0.1:5000/grav?q=mattdhoey@gmail.com
   ```
+ ## Тесты ##
+ Для запуска тестов откройте консоль в корневой деректории с GRAV и выполните команду:
+ ```
+  source venv/bin/activate && pytest tests -v
+  ```
